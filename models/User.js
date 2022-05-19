@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     phoneNumber : {
         type : String,
         index : {
-            unique : true,
+            unique : [true, "this phone number already exist"],
             partialFilterExpression : {googleId: {$type: "string"}}
           }
     },
@@ -24,7 +24,7 @@ const UserSchema = new Schema({
     username : {
         type : String,
         required : true,
-        unique : true 
+        unique : [true, "this username already exist"],
     },
     role : {
         type : String,
@@ -34,7 +34,7 @@ const UserSchema = new Schema({
     email : {
         type : String ,
         require : [true, 'email is required'],
-        unique : true 
+        unique : [true, "this email already exist"],
     },
     password : {
         type : String,
