@@ -48,3 +48,10 @@ db.connect()
 });
 
 
+// catchings errors
+app.use((error, req, res, next) => {
+  console.log(error);
+  const status = error.statusCode || 500;
+  const message = error;
+  res.status(status).json({ message: message});
+});
