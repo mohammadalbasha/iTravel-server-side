@@ -38,7 +38,7 @@ app.use('/auth', authRoutes);
 db.connect()
 .then (res => {
     console.log ('database connected successfully');
-    return app.listen (5000 || process.env.PORT);
+    return app.listen (process.env.PORT || 5000);
 })
 .then (res => {
     console.log('server is intialized');
