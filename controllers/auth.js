@@ -79,6 +79,8 @@ module.exports.login = (req,res,next) => {
    
     let loadedUser; 
 
+    console.log("username" + username);
+
     User.findOne( {  $or: [{'email':username}, {'username':username}]})
         .then (user => {
             if (!user){
