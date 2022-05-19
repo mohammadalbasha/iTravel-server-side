@@ -79,12 +79,9 @@ module.exports.login = (req,res,next) => {
    
     let loadedUser; 
 
-    console.log("username" + username);
-
     User.findOne( {  $or: [{'email':username}, {'username':username}]})
         .then (user => {
             if (!user){
-                console.log(user);
             const error = new Error('A user with this email or username could not be found.');
             error.statusCode = 401;
             throw error;
