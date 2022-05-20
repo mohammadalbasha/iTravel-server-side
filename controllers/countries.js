@@ -49,7 +49,7 @@ function extractInformations (informations){
 }
 
 module.exports.getGeneralInformations = (req,res,next) => {
-    const category = req.params.category;
+    const category = 'name';
     const value = req.params.value;
 
     getGeneralInformations(category,value)

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const countriesController = require('../controllers/countries');
 
-router.get('/getGeneralInformations/:category/:value', 
+router.get('/getGeneralInformations/:value', 
             countriesController.getGeneralInformations);
 
 module.exports = router;
