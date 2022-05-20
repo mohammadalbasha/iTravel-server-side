@@ -15,9 +15,9 @@ function extractUserInformation (req){
     const nationality = req.body.nationality ? req.body.nationality : null;
  
     const {username, password, email} = req.body;
-
-    imageUrl=req.file.path.replace("\\" ,"/");
- 
+    //imageUrl=req.file.path.replace("\\" ,"/");
+    imageUrl = req.file.path;
+    
     let role ;
     if (req.url==='/admin/signup')
         role = 'Admin';

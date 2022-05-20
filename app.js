@@ -6,6 +6,7 @@ const path = require('path');
 // my packages 
 const db = require('./db');
 const authRoutes = require('./routes/auth');
+const countriesRoutes = require('./routes/countries');
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
 app.get('/' , (req,res,next) => { res.send("hello")});
 //routes 
 app.use('/auth', authRoutes);
-
+app.use('/countries', countriesRoutes);
 
 // connecting to database and intialzing the server
 db.connect()
