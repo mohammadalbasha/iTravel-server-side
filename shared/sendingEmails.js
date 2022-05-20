@@ -25,7 +25,7 @@ module.exports.confirmAccount = (userId, userEmail) => {
                 to: userEmail, // list of receivers
                 subject: "Acoount Confirmation ✔", // Subject line
                 text: "please, Click on the Url to Confirm your email", // plain text body
-                html: `<a href="http://localhost:5000/auth/confirmAccount/${userId}">
+                html: `<a href="https://itravel-yymm.herokuapp.com/auth/confirmAccount/${userId}">
                           <button>
                             Click
                           </button>
