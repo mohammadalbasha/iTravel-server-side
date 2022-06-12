@@ -7,6 +7,7 @@ const path = require('path');
 const db = require('./db');
 const authRoutes = require('./routes/auth');
 const countriesRoutes = require('./routes/countries');
+const restaurantsRoutes = require('./routes/restaurants');
 
 const app = express();
 
@@ -30,10 +31,13 @@ app.use((req, res, next) => {
   });
 
   
-app.get('/' , (req,res,next) => { res.send("hello")});
+
+app.get('/' , (req,res,next) => {res.send("hello world")});
+
 //routes 
 app.use('/auth', authRoutes);
 app.use('/countries', countriesRoutes);
+app.use('/restaurants', restaurantsRoutes);
 
 // connecting to database and intialzing the server
 db.connect()
