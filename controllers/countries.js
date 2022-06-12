@@ -1,18 +1,6 @@
 const express = require ('express');
 const axios = require('axios');
 
-function getGeneralInformations (category, value){
-    return(
-        axios({
-            method: 'get',
-            url: `https://restcountries.com/v3.1/${category}/${value}`
-        })
-        .then (respnose => {
-            return extractInformations(respnose.data[0]);
-        })
-    );  
-        
-}
 
 function extractInformations (informations){
     const name  = {
@@ -48,15 +36,28 @@ function extractInformations (informations){
     }
 }
 
+function getGeneralInformations (category, value){
+    return(
+        axios({
+            method: 'get',
+            url: `https://restcountries.com/v3.1/${category}/${value}`
+        })
+        .then (respnose => {
+            return extractInformations(respnose.data[0]);
+        })
+    );  
+        
+}
+
 module.exports.getGeneralInformations = (req,res,next) => {
     const category = 'name';
     const value = req.params.value;
 
     getGeneralInformations(category,value)
-    .then (informations => {
-        res.status(200).json(informations);
-    })
-    .catch (err => {
-        next(err);
-    })
+        .then (informations => {
+            res.status(200).json(informations);
+        })
+        .catch (err => {
+            next(err);
+        })
 };

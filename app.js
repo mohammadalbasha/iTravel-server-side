@@ -12,6 +12,7 @@ const restaurantsRoutes = require('./routes/restaurants');
 const app = express();
 
 // serving static images 
+// needed only if we store images localy, but now we store images cloudly
 app.use('/images', express.static(path.join(__dirname,'images')));
 
 app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
