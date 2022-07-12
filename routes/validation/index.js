@@ -40,3 +40,6 @@ module.exports.validateUser = [
         },
 ];
 
+module.exports.validateStay = [];
+module.exports.validateTouristPlan = [];
+module.exports.validatePlace = [];

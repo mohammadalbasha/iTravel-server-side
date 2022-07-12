@@ -32,6 +32,7 @@ function extractUserInformation (req){
         password,
         email,
         role,
+        nationality,
         imageUrl
     }       
 }

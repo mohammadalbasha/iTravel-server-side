@@ -31,10 +31,18 @@ const UserSchema = new Schema({
         enum : ['Admin','User'],
         required : [true, 'role is required']
     },
-    email : {
-        type : String ,
-        require : [true, 'email is required'],
-        unique : [true, "this email already exist"],
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        unique: [true, 'this email alreadu exists'],
+        required: 'Email address is required',
+        validate: [(email) => {
+                var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return re.test(email)
+            }, 
+            'Please fill a valid email address'],
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     password : {
         type : String,

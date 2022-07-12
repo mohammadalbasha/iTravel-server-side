@@ -1,0 +1,62 @@
+{
+    "property": {
+        "propertyName": "stay",
+        "propertyType": "sweet",
+        "rooms": "2",
+        "floor": "first"
+    },
+    "location": {
+        "country": "Syria",
+        "city": "Damascus",
+        "area": "kalamon",
+        "address": "yabrud/40th street",
+        "facingDirection": "adel saad school"
+    },
+    "price": {
+        "rentalPrice": "300"
+    },
+    "contact": {
+        "phoneNumber": "0998765432",
+        "email": "hamoudy00128@hotmail.com"
+    },
+    "_id": "62ba4031fcd2ad491c0ced1b",
+    "features": [],
+    "description": "furnished appartment , warm in winter cold in summer , nice view , tv , fridge , water cooler ",
+    "images": [
+        "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1656373275/images/1656373266918bluck.jpg.jpg",
+        "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1656373297/images/1656373268434112380.jpg.jpg",
+        "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1656373291/images/16563732856721234.png.png"
+    ],
+    "contactRenewal": "conrenw",
+    "owner": {
+        "_id": "6287cecfe5e79f6b228dc417",
+        "firstName": "mohammad",
+        "lastName": "albasha",
+        "phoneNumber": "00963997699458",
+        "imageUrl": "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1653067470/images/1653067433975mme%20-%20Copy.PNG.png",
+        "username": "hamoudy",
+        "role": "User",
+        "email": "hamoudy00128@hotmail.com",
+        "password": "$2b$10$5bxrQEYb6ODW8yOdLQEWRucCn43K1xggUncgn1xKx3P/N4BKnTk2y",
+        "isConfirmed": true,
+        "isActive": true,
+        "__v": 0
+    },
+    "interestedUsers": [
+        {
+            "_id": "6287cecfe5e79f6b228dc417",
+            "firstName": "mohammad",
+            "lastName": "albasha",
+            "phoneNumber": "00963997699458",
+            "imageUrl": "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1653067470/images/1653067433975mme%20-%20Copy.PNG.png",
+            "username": "hamoudy",
+            "role": "User",
+            "email": "hamoudy00128@hotmail.com",
+            "password": "$2b$10$5bxrQEYb6ODW8yOdLQEWRucCn43K1xggUncgn1xKx3P/N4BKnTk2y",
+            "isConfirmed": true,
+            "isActive": true,
+            "__v": 0
+        }
+    ],
+    "__v": 1
+}

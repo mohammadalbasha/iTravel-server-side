@@ -1,0 +1,31 @@
+[
+    {
+        "_id": "62c8ae49b84f4aef89c0c9cf",
+        "title": "أحياء قديمة",
+        "country": "syria",
+        "city": "damascus",
+        "userDescription": "زيارة الاحياء والمباني الشعبية القديمة التاريخية في مدينة دمشق سوريا",
+        "places": [
+            {
+                "country": "Syria",
+                "city": "Damascus",
+                "state_district": "دمشق",
+                "street": "شارع 29",
+                "address": "دمشق القديمة , باب توما",
+                "category": "historicalPlaces",
+                "categories": [
+                    "tourism",
+                    "tourism.attrcation"
+                ],
+                "userDescription": "احياء شعبية قديمة جميلة جدا وأزقة ضيقة وأماكن رومانسية للعشاق ",
+                "userImages": [
+                    "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1657371236/images/1657371219619Bab_Touma_Gate_Damascus.jpg.jpg",
+                    "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1657371227/images/1657371224529bbt.jpg.jpg",
+                    "https://res.cloudinary.com/dn9mwwr0j/image/upload/v1657371233/images/1657371224530alalam_636289112998745016_25f_4x3.jpg.jpg"
+                ],
+                "_id": "62c97a668fe5ad7f1c2ac80b"
+            }
+        ],
+        "__v": 1
+    }
+]
