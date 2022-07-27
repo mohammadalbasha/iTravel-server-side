@@ -9,6 +9,7 @@ const {confirmAccount} = require('../shared/sendingEmails');
 
 // extracting user information from req.body
 function extractUserInformation (req){
+
     const firstName = req.body.firstName ? req.body.firstName : null;
     const lastName = req.body.lastName ? req.body.lastName : null;
     const phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : null;
@@ -127,3 +128,8 @@ module.exports.login = (req,res,next) => {
         })
 
 };
+
+module.exports.getProfile = (req, res, next) => {
+    console.log(req.user);
+    res.status(200).json(req.user);
+}

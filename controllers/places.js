@@ -56,11 +56,29 @@ getInformationsAboutPlaces =  (category, latitude, longitude) => {
         .then (res => {
             for (var i = 0 ; i<res.data.features.length ; i++){
                 let {name, street, county, city, state_district, country,  place_id}  = res.data.features[i].properties;     
-                let {email, phone, website} = res.data.features[i].properties.datasource; // here may be destructing from null error
+                let {email, phone, website} = res.data.features[i].properties.datasource.raw; // here may be destructing from null error
                 city = city || "";
                 phone = phone || "";
                 email = email || "";
                 website = website || "";
+                if (!website){
+                    if (res.data.features[i].properties.datasource.raw.wikidata){
+                        website = `https://www.wikidata.org/wiki/${res.data.features[i].properties.datasource.raw.wikidata}`
+                    }
+                    else if (res.data.features[i].properties.datasource.raw.osm_id){
+                        switch(res.data.features[i].properties.datasource.raw.osm_type){
+                            case 'w' :
+                                website = `https://www.openstreetmap.org/way/${res.data.features[i].properties.datasource.raw.osm_id}`;
+                                break;
+                            case 'n' : 
+                                website = `https://www.openstreetmap.org/node/${res.data.features[i].properties.datasource.raw.osm_id}`;
+                                break; 
+                            default : 
+                                website = `https://www.openstreetmap.org/realtion/${res.data.features[i].properties.datasource.raw.osm_id}`;
+                                    
+                        }
+                    }
+                }
 
                 const location = {
                     longitude : res.data.features[i].properties.lon,

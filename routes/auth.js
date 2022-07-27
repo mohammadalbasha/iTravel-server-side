@@ -8,7 +8,7 @@ const {uploadImage} = require('../shared/uploadingFiles');
 
 router.post('/signup',
             uploadImage.single('image'),
-            validateUser,
+         //   validateUser,
             authController.signUp);
 
 router.post('/admin/signUp',
@@ -19,6 +19,10 @@ router.post('/admin/signUp',
 router.get('/confirmAccount/:userId', authController.confirmAccount);
 
 router.post('/login', authController.login);
+
+router.get('/getProfile',
+          authMiddleware.isLoggedIn,
+          authController.getProfile);
             
 module.exports = router;
 

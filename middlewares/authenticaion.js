@@ -43,6 +43,7 @@ module.exports.isLoggedIn = (req,res,next) => {
                 error.statusCode = 401;
                 throw error;
             }
+            req.user = user;
             next();
         })
         .catch (err => {
