@@ -67,7 +67,6 @@ const staySchema = mongoose.Schema({
             type: String,
             trim: true,
             lowercase: true,
-            unique: [true, 'this email alreadu exists'],
             required: 'Email address is required',
             validate: [(email) => {
                     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
