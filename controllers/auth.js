@@ -56,7 +56,13 @@ module.exports.signUp = (req,res,next) => {
             //         next(err);
             //     })
             // })
-            res.status(201).json('Succesfully Signed Up! please Confirm Your Account, we have send a massage to your email.')
+            return  User.findByIdAndDelete(userDoc._id.toString())
+                .then (response => {
+                    res.status(201).json('Succesfully Signed Up! please Confirm Your Account, we have send a massage to your email.')
+                })
+                .catch (err => {
+                    next(err);
+                })
 
         })
         .catch (err => {
