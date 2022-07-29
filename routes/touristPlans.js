@@ -20,9 +20,9 @@ router.get('/myPlans',
             authMiddleware.isLoggedIn,
             touristPlansController.getMyPlans);
 
-router.get('/myPlansNameAndId',
+router.get('/myPlansGeneral',
             authMiddleware.isLoggedIn,
-            touristPlansController.getMyPlansNameAndId);            
+            touristPlansController.getMyPlansGeneral);            
 
 router.get('/plans/:country',
             touristPlansController.getPlans);
