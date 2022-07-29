@@ -21,7 +21,7 @@ module.exports.isLoggedIn = (req,res,next) => {
         decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
     }
     catch (err) {
-        err.statusCode = 500;
+        err.statusCode = 401;
         throw err;
     }
     if (!decodedToken){
