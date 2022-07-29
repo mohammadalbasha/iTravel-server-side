@@ -85,6 +85,17 @@ module.exports.getMyPlans = (req, res, next) => {
                 })
 }
 
+module.exports.getMyPlansNameAndId = (req, res, next) => {
+    TouristPlan.find({planCreator: req.userId})
+                .select('_id title')
+                .then (plans => {
+                    res.status(200).json(plans);
+                })
+                .catch (err => {
+                    next(err);
+                })
+}
+
 module.exports.getPlans = (req, res, next) => {
     const country = req.params.country;
     TouristPlan.find({country: country})

@@ -20,6 +20,10 @@ router.get('/myPlans',
             authMiddleware.isLoggedIn,
             touristPlansController.getMyPlans);
 
+router.get('/myPlansNameAndId',
+            authMiddleware.isLoggedIn,
+            touristPlansController.getMyPlansNameAndId);            
+
 router.get('/plans/:country',
             touristPlansController.getPlans);
 
