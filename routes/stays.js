@@ -12,7 +12,7 @@ router.post('/addStay',
             staysController.addStay);
 
 router.get('/getStays',
-            authMiddleware.isLoggedIn,
+       //     authMiddleware.isLoggedIn,
             staysController.getStays);
 
 router.get('/getStay/:stayId',

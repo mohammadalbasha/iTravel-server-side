@@ -42,18 +42,24 @@ const placesCategories = {
 
 getInformationsAboutPlaces =  (category, latitude, longitude) => {
 
-    const latitude_1 = ((Number(latitude)) + 0.1 ).toString();
-    const latitude_2 = ((Number(latitude)) - 0.1 ).toString();
-    const longitude_1 = ((Number(longitude)) + 0.1).toString();
-    const longitude_2 = ((Number(longitude)) - 0.1).toString();
+    const latitude_1 = ((Number(latitude)) - 0.2 ).toFixed(12);
+    const latitude_2 = ((Number(latitude)) + 0.2).toFixed(12);
+    const longitude_1 = ((Number(longitude)) - 0.2).toFixed(12);
+    const longitude_2 = ((Number(longitude)) + 0.2).toFixed(12);
 
+    console.log(longitude_1,longitude_2,latitude_1,latitude_2)
     const informations = [] ;
 
     const searchCategory = placesCategories[category];
+    const url = `https://api.geoapify.com/v2/places?categories=${searchCategory}
+    &filter=rect:${longitude_1},${latitude_1},${longitude_2},${latitude_2}&limit=40
+    &apiKey=${process.env.GEOPIFY_API}`;
+    console.log(url);
     return axios.get(`https://api.geoapify.com/v2/places?categories=${searchCategory}
         &filter=rect:${longitude_1},${latitude_1},${longitude_2},${latitude_2}&limit=40
         &apiKey=${process.env.GEOPIFY_API}`)
         .then (res => {
+            console.log(res.data);
             for (var i = 0 ; i<res.data.features.length ; i++){
                 let {name, street, county, city, state_district, country,  place_id}  = res.data.features[i].properties;     
                 let {email, phone, website} = res.data.features[i].properties.datasource.raw; // here may be destructing from null error

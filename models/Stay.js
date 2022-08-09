@@ -9,7 +9,7 @@ const staySchema = mongoose.Schema({
         },
         propertyType : {
             type : String,
-            enum : ['apartment', 'sweet', 'house']
+            enum : ['Apartment','Duplex Apartment', 'House', 'Studio', 'Villa', 'sweet']
         },
         rooms : {
             type : String

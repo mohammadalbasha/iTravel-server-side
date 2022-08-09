@@ -84,8 +84,9 @@ module.exports.getStay = (req, res, next) => {
 
 module.exports.addInterestedUser = (req, res, next) => {
     const {stayId} = req.params;
-    const {userId} = req.body;
-
+    //const {userId} = req.body;
+    const { userId } = req;
+    
     Stay.findById(stayId)
         .then (stay => {
             stay.interestedUsers.push(userId)
