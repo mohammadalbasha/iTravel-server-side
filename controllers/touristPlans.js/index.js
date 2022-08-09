@@ -97,8 +97,12 @@ module.exports.getMyPlansGeneral = (req, res, next) => {
 }
 
 module.exports.getPlans = (req, res, next) => {
-    const country = req.params.country;
-    TouristPlan.find({country: country})
+    const { country, city } = req.query;
+
+            TouristPlan.find({
+                country : country,
+                city : city 
+            })
                 .select('-places -interestedUsers -planCreator')
                 .then (plans => {
                     res.status(200).json(plans);

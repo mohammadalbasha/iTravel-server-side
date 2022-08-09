@@ -60,7 +60,11 @@ module.exports.addStay = (req, res, next) => {
 };
 
 module.exports.getStays = (req, res, next) => {
-    Stay.find()
+const { country, city } = req.query;
+        Stay.find({
+        country : country,
+        city : city 
+    })
         .select('-owner -interestedUsers')
         .then (stays => {
             res.status(200).json(stays);

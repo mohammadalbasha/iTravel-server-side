@@ -24,7 +24,7 @@ router.get('/myPlansGeneral',
             authMiddleware.isLoggedIn,
             touristPlansController.getMyPlansGeneral);            
 
-router.get('/plans/:country',
+router.get('/plans',
             touristPlansController.getPlans);
 
 router.get('/plan/:planId',
