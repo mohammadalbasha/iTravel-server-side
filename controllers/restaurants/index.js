@@ -59,7 +59,7 @@ function getRestaurants (city, country){
               const encodedParams = new URLSearchParams();
               encodedParams.append("currency", "USD");
               encodedParams.append("location_id", locationId);
-              encodedParams.append("limit", "30");
+              encodedParams.append("limit", "50");
               encodedParams.append("language", "en_US");
 
               const options = {

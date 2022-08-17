@@ -87,12 +87,18 @@ module.exports.getStay = (req, res, next) => {
 };
 
 module.exports.addInterestedUser = (req, res, next) => {
+    
     const {stayId} = req.params;
     //const {userId} = req.body;
     const { userId } = req;
     
     Stay.findById(stayId)
         .then (stay => {
+            if (!stay){
+                const error = new Error('stay not found');
+                error.statusCode = 404; 
+                throw error;
+            }
             stay.interestedUsers.push(userId)
             return stay.save();
         })

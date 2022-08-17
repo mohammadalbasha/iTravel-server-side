@@ -14,7 +14,7 @@ router.post('/addTrip',
 router.get('/getTrips',
             tripsController.getTrips);
 
-router.get('/getStay/:tripId',
+router.get('/getTrip/:tripId',
             tripsController.getTrip)
 
 router.post('/addInterestedUser/:tripId',
