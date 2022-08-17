@@ -10,8 +10,9 @@ const countriesRoutes = require('./routes/countries');
 const restaurantsRoutes = require('./routes/restaurants');
 const staysRoutes = require('./routes/stays');
 const placesRoutes = require('./routes/places');
-const touristPlansRoutes = require('./routes/touristPlans')
+const touristPlansRoutes = require('./routes/touristPlans');
 const experiencesRoutes = require('./routes/experiences');
+const tripsRoutes = require('./routes/trips');
 
 const app = express();
 
@@ -67,7 +68,8 @@ app.use('/restaurants', restaurantsRoutes);
 app.use('/stays', staysRoutes);
 app.use('/places', placesRoutes);
 app.use('/touristPlans', touristPlansRoutes);
-app.use('/experiences', experiencesRoutes)
+app.use('/experiences', experiencesRoutes);
+app.use('/trips', tripsRoutes);
 
 
 // connecting to database and intialzing the server
