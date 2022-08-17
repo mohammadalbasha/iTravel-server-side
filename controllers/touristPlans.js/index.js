@@ -96,12 +96,35 @@ module.exports.getMyPlansGeneral = (req, res, next) => {
                 })
 }
 
+function applyRegex (query, key, property){
+    if (property == 'undefined' )return;
+    property = property ? {$regex:property.toString()} : property;
+    if (property){
+        query[key] = property;
+    }
+     
+}
 module.exports.getPlans = (req, res, next) => {
-    const { country, city } = req.query;
+    let {country, city, searchFilter} = req.query;
+    const query = {
+    }; 
+    if (country && country != 'undefined') {
+        query['country'] = country;
+    }
+    if (city && city != 'undefined'){
+        query['city'] = city;
+    }
+    const query1 = {...query};
+    const query2 = {...query};
+    
+    console.log(query1, query2)
+    applyRegex(query1, 'title', searchFilter);
+    applyRegex(query2, 'description', searchFilter);
+    
+
 
             TouristPlan.find({
-                country : country,
-                city : city 
+                $or : [query1, query2]
             })
                 .select('-places -interestedUsers -planCreator')
                 .then (plans => {

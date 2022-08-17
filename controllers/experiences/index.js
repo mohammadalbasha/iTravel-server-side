@@ -38,16 +38,16 @@ const { ObjectId } = require('mongodb');
         
         let {country, city, type, branch, searchFilter, creatorNationality} = req.query;
         const query = {}; 
-        if (country != 'undefined') {
+        if (country && country != 'undefined') {
             query.country = country;
         }
-        if (city != 'undefined'){
+        if (city && city != 'undefined'){
             query.city = city;
         }
-        if (branch != 'undefined'){
+        if (branch && branch != 'undefined'){
             query.branch = branch;
         }
-        if (type != 'undefined'){
+        if (type && type != 'undefined'){
             query.type = type;
         }
         const query1 = {...query};

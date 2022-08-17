@@ -12,9 +12,9 @@ const tripSchema = mongoose.Schema({
         capacity : {
             type : Number
         },
-        transportaions : {
+        transportations : {
             type : String,
-            enum : ['bus', 'train', 'microbus', 'ship', 'boat', 'multiple']
+            enum : ['bus', 'train', 'microbus', 'ship', 'boat', 'multiple', 'yacht', 'boat', 'motor', 'bicycle']
         },
         launchDate : {
             type : Date
@@ -73,7 +73,7 @@ const tripSchema = mongoose.Schema({
             type: String,
             trim: true,
             lowercase: true,
-            unique: [true, 'this email alreadu exists'],
+         //   unique: [true, 'this email alreadu exists'],
             required: 'Email address is required',
             validate: [(email) => {
                     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

@@ -24,8 +24,10 @@ module.exports.confirmAccount = (userId, userEmail) => {
                 from: '"Travel Assistant" <albashamohammad27@gmail.com>', // sender address
                 to: userEmail, // list of receivers
                 subject: "Acoount Confirmation ✔", // Subject line
-                text: "please, Click on the Url to Confirm your email", // plain text body
-                html: `<a href="https://itravel-yymm.herokuapp.com/auth/confirmAccount/${userId}">
+                text: "please, Click on the Url to Confirm your iTravel account ", // plain text body
+                html: `
+                <h1> please, Click on the Url to Confirm your <span>iTravel</span> account </h1>
+                <a href="https://itravel-yymm.herokuapp.com/auth/confirmAccount/${userId}">
                           <button>
                             Click
                           </button>

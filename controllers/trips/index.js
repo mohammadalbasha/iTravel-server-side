@@ -9,13 +9,13 @@ function extractTripInformationsFromRequest (req) {
     for (var i=0 ; i<req.files.length ; i++){
         images.push(req.files[i].path);
     }
-    const {tripName, duration, capacity, transportations, country, launchCity, destinationCity, launchPlace, destinationPlace, stations, features, description, currency, cost, phoneNumber, email, startDate, returnDate } = req.body;
+    const {tripName, duration, capacity, transportations, country, launchCity, destinationCity, launchPlace, destinationPlace, stations, features, description, currency, cost, phoneNumber, email, launchDate, returnDate } = req.body;
     const generalInformations = {
         tripName,
         duration,
         capacity,
         transportations,
-        startDate,
+        launchDate,
         returnDate
     };
     const location = {
@@ -61,8 +61,41 @@ module.exports.addTrip = (req, res, next) => {
 
 };
 
+ 
+function applyRegex (query, key, property){
+    if (property == 'undefined' )return;
+    property = property ? {$regex:property.toString()} : property;
+    if (property){
+        query[key] = property;
+    }
+     
+}
 module.exports.getTrips = (req, res, next) => {
-    Trip.find()
+    let {country, launchCity, destinationCity, searchFilter} = req.query;
+    const query = {
+    }; 
+    if (country && country != 'undefined') {
+        query['location.country'] = country;
+    }
+    if (launchCity && launchCity != 'undefined'){
+        query['location.launchCity'] = launchCity;
+    }
+    if (destinationCity && destinationCity != 'undefined'){
+        query['location.destinationCity'] = destinationCity;
+    }
+   
+    const query1 = {...query};
+    const query2 = {...query};
+    
+    console.log(query1, query2)
+    applyRegex(query1, 'description', searchFilter);
+    applyRegex(query2, 'generalInformations.tripName', searchFilter);
+    
+
+    
+    Trip.find({
+        $or : [query1, query2]
+    })
         .select('-owner -interestedUsers')
         .then (trips => {
             res.status(200).json(trips);
@@ -85,8 +118,9 @@ module.exports.getTrip = (req, res, next) => {
 };
 
 module.exports.addInterestedUser = (req, res, next) => {
+
     const {tripId} = req.params;
-    const {userId} = req.body;
+    const {userId} = req;
 
     Trip.findById(tripId)
         .then (trip => {
@@ -94,6 +128,7 @@ module.exports.addInterestedUser = (req, res, next) => {
             return trip.save();
         })
         .then (result => {
+            console.log(result)
             res.status(200).json("this user was marked interested successfully");
         })
         .catch (err => {

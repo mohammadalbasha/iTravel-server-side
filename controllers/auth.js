@@ -43,26 +43,26 @@ module.exports.signUp = (req,res,next) => {
     const user = new User(extractUserInformation(req));
     user.save() 
         .then (userDoc => {
-            // confirmAccount(userDoc._id, userDoc.email)
-            // .then (result => {
-            //     res.status(201).json('Succesfully Signed Up! please Confirm Your Account, we have send a massage to your email.')
-            // })
-            // .catch (err => {
-            //     User.findByIdAndDelete(userDoc._id.toString())
-            //     .then (response => {
-            //         next(err);
-            //     })
-            //     .catch (err => {
-            //         next(err);
-            //     })
-            // })
-            return  User.findByIdAndDelete(userDoc._id.toString())
+            confirmAccount(userDoc._id, userDoc.email)
+            .then (result => {
+                res.status(201).json('Succesfully Signed Up! please Confirm Your Account, we have send a massage to your email.')
+            })
+            .catch (err => {
+                User.findByIdAndDelete(userDoc._id.toString())
                 .then (response => {
-                    res.status(201).json('Succesfully Signed Up! please Confirm Your Account, we have send a massage to your email.')
+                    next(err);
                 })
                 .catch (err => {
                     next(err);
                 })
+            })
+            // return  User.findByIdAndDelete(userDoc._id.toString())
+            //     .then (response => {
+            //         res.status(201).json('Succesfully Signed Up! please Confirm Your Account, we have send a massage to your email.')
+            //     })
+            //     .catch (err => {
+            //         next(err);
+            //     })
 
         })
         .catch (err => {
