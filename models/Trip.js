@@ -7,7 +7,7 @@ const tripSchema = mongoose.Schema({
             type : String,
         },
         duration : {
-            type : Number,
+            type : String,
         },
         capacity : {
             type : Number
@@ -94,7 +94,7 @@ const tripSchema = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model ('Trip', staySchema);
+module.exports = mongoose.model ('Trip', tripSchema);
 
 
 

@@ -4,7 +4,7 @@ const { ObjectId } = require('mongodb');
 const Trip = require('../../models/Trip');
 
 
-function extractStayInformationsFromRequest (req) {
+function extractTripInformationsFromRequest (req) {
     const images = [];
     for (var i=0 ; i<req.files.length ; i++){
         images.push(req.files[i].path);
@@ -50,7 +50,7 @@ function extractStayInformationsFromRequest (req) {
 }
 
 module.exports.addTrip = (req, res, next) => {
-    const stay = new Trip (extractStayInformationsFromRequest(req));
+    const trip = new Trip (extractTripInformationsFromRequest(req));
     trip.save()
         .then (result => {
             res.status(200).json("trip added successfully");
