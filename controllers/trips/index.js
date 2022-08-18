@@ -26,7 +26,7 @@ function extractTripInformationsFromRequest (req) {
         destinationPlace,
         stations
     };
-    const feaature = [...features];
+    
     const price = {
         currency,
         cost
@@ -40,7 +40,7 @@ function extractTripInformationsFromRequest (req) {
     return {
         generalInformations,
         location,
-        feaature,
+        features,
         contact,
         owner,
         images,

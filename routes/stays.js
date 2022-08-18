@@ -19,6 +19,12 @@ router.get('/getStay/:stayId',
             authMiddleware.isLoggedIn,
             staysController.getStay)
 
+
+router.get('/getMyStays',
+            authMiddleware.isLoggedIn,
+            staysController.getMyStays)
+
+                        
 router.post('/addInterestedUser/:stayId',
             authMiddleware.isLoggedIn,
             staysController.addInterestedUser)

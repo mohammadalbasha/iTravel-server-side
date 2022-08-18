@@ -86,6 +86,17 @@ module.exports.getStay = (req, res, next) => {
         })
 };
 
+module.exports.getMyStays = (req, res, next) => {
+    Stay.find({owner: req.userId})
+                .select()
+                .then (stays => {
+                    res.status(200).json(stays);
+                })
+                .catch (err => {
+                    next(err);
+                })
+}
+
 module.exports.addInterestedUser = (req, res, next) => {
     
     const {stayId} = req.params;
