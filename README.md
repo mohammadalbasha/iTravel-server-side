@@ -19,7 +19,7 @@ this api from iTravel application , it sevrvse several features :
 16- discover trips around the world and ability to filtering results.
 17- find interested users in some trips so users can find their partners
 
-POSTMAN LINK : 
+POSTMAN LINK : https://www.getpostman.com/collections/4a3a188a4a479fcba3c2
 
 used Technologies : 
 1-
