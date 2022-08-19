@@ -97,7 +97,7 @@ module.exports.getMyPlansGeneral = (req, res, next) => {
 }
 
 function applyRegex (query, key, property){
-    if (property == 'undefined' )return;
+    if (property == 'undefined' || property == 'default')return;
     property = property ? {$regex:property.toString()} : property;
     if (property){
         query[key] = property;
@@ -105,31 +105,40 @@ function applyRegex (query, key, property){
      
 }
 module.exports.getPlans = (req, res, next) => {
-    let {country, city, searchFilter} = req.query;
+    let {country, city, searchFilter, creatorNationality} = req.query;
     const query = {
     }; 
-    if (country && country != 'undefined') {
+    if (country && country != 'undefined' && country != 'default') {
         query['country'] = country;
     }
-    if (city && city != 'undefined'){
+    if (city && city != 'undefined' && city != 'default'){
         query['city'] = city;
     }
+    
     const query1 = {...query};
     const query2 = {...query};
     
-    console.log(query1, query2)
     applyRegex(query1, 'title', searchFilter);
-    applyRegex(query2, 'description', searchFilter);
+    applyRegex(query2, 'userDescription', searchFilter);
     
+    console.log(query1, query2)
 
 
             TouristPlan.find({
                 $or : [query1, query2]
             })
-                .select('-places -interestedUsers -planCreator')
+                .select('-places -interestedUsers')
+                .populate('planCreator')
                 .then (plans => {
-                    res.status(200).json(plans);
-                })
+                    if (creatorNationality && creatorNationality != 'undefined' && creatorNationality != 'default'){
+                        const filteredPlans = plans.filter(plan =>  plan.planCreator.nationality === creatorNationality);
+                        console.log(filteredPlans)
+                        res.status(200).json(filteredPlans);
+                    }
+                    else{
+                        res.status(200).json(plans)
+                
+                    }                })
                 .catch(err => {
                     next(err);
                 })

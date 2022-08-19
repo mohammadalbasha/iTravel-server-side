@@ -27,7 +27,7 @@ module.exports.confirmAccount = (userId, userEmail) => {
                 text: "please, Click on the Url to Confirm your iTravel account ", // plain text body
                 html: `
                 <h1> please, Click on the Url to Confirm your <span>iTravel</span> account </h1>
-                <a href="https://itravel-yymm.herokuapp.com/auth/confirmAccount/${userId}">
+                <a href="http://localhost:5000/auth/confirmAccount/${userId}">
                           <button>
                             Click
                           </button>

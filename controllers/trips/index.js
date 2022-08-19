@@ -63,7 +63,7 @@ module.exports.addTrip = (req, res, next) => {
 
  
 function applyRegex (query, key, property){
-    if (property == 'undefined' )return;
+    if (property == 'undefined' || property == 'default')return;
     property = property ? {$regex:property.toString()} : property;
     if (property){
         query[key] = property;
@@ -74,13 +74,13 @@ module.exports.getTrips = (req, res, next) => {
     let {country, launchCity, destinationCity, searchFilter} = req.query;
     const query = {
     }; 
-    if (country && country != 'undefined') {
+    if (country && country != 'undefined' && country != 'default') {
         query['location.country'] = country;
     }
-    if (launchCity && launchCity != 'undefined'){
+    if (launchCity && launchCity != 'undefined' && launchCity != 'default'){
         query['location.launchCity'] = launchCity;
     }
-    if (destinationCity && destinationCity != 'undefined'){
+    if (destinationCity && destinationCity != 'undefined' && destinationCity != 'default'){
         query['location.destinationCity'] = destinationCity;
     }
    

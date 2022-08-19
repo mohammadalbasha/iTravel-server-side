@@ -6,7 +6,7 @@ const experienceSchema = mongoose.Schema({
     },
     type : {
         type : String,
-        enum : ['Work', 'Master Study', 'Bachelor Study', 'Pleasure'],
+        enum : ['Work', 'Master Study', 'Bachelor Study',  'Pleasure', 'Stays'],
         required : true
     },
     branch : {

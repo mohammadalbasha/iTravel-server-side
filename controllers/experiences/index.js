@@ -27,7 +27,7 @@ const { ObjectId } = require('mongodb');
     } 
     
     function applyRegex (query, key, property){
-        if (property == 'undefined' )return;
+        if (property == 'undefined' || property == 'default')return;
         property = property ? {$regex:property.toString()} : property;
         if (property){
             query[key] = property;
@@ -44,10 +44,10 @@ const { ObjectId } = require('mongodb');
         if (city && city != 'undefined'){
             query.city = city;
         }
-        if (branch && branch != 'undefined'){
+        if (branch && branch != 'undefined' && branch != 'default'){
             query.branch = branch;
         }
-        if (type && type != 'undefined'){
+        if (type && type != 'undefined' && branch != 'default'){
             query.type = type;
         }
         const query1 = {...query};
@@ -61,7 +61,7 @@ const { ObjectId } = require('mongodb');
         })
         .populate('creator')
            .then (experiences => {
-            if (creatorNationality != 'undefined' && creatorNationality != 'default'){
+            if (creatorNationality && creatorNationality != 'undefined' && creatorNationality != 'default'){
                 const filteredExperiences = experiences.filter(experience =>  experience.creator.nationality === creatorNationality);
                 res.status(200).json(filteredExperiences);
             }
